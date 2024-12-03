@@ -468,7 +468,10 @@ function getMaxItems(arr, n) {
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
 function findCommonElements(arr1, arr2) {
-  return Array.from(new Set(arr1).intersection(new Set(arr2)));
+  return arr1.reduce(
+    (acc, curr) => (arr2.includes(curr) ? [...acc, curr] : acc),
+    []
+  );
 }
 
 /**
