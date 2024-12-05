@@ -520,8 +520,10 @@ function propagateItemsByPositionIndex(arr) {
  *    shiftArray(['a', 'b', 'c', 'd'], -1) => ['b', 'c', 'd', 'a']
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
-function shiftArray(/* arr, n */) {
-  throw new Error('Not implemented');
+function shiftArray(arr, n) {
+  const index = n < 0 ? Math.abs(n) : n + 1;
+
+  return arr.slice(index).concat(arr.slice(0, index));
 }
 
 /**
@@ -573,8 +575,13 @@ function sortDigitNamesByNumericOrder(arr) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  return arr
+    .slice(Math.ceil(arr.length / 2))
+    .concat(
+      arr.length % 2 ? arr[Math.floor(arr.length / 2)] : [],
+      arr.slice(0, Math.floor(arr.length / 2))
+    );
 }
 
 module.exports = {
